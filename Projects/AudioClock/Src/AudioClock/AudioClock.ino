@@ -52,11 +52,11 @@ void setup() {
   }
   Serial.println(F("DFPlayer Mini online."));
   
-  myDFPlayer.volume(20);  //Set volume value. From 0 to 30
+  myDFPlayer.volume(25);  //Set volume value. From 0 to 30
   myDFPlayer.play(1);  //Play the first mp3
 
   pinMode(5, OUTPUT);          // sets the digital pin 13 as output
-  analogWrite(5, 150); 
+  analogWrite(5, 255); 
 
   //
   // RTC
@@ -69,7 +69,7 @@ void setup() {
   // LCD
   //
   display.begin();
-  display.setContrast(30);
+  display.setContrast(40);
   display.display(); // show splashscreen
 } 
 
@@ -90,7 +90,8 @@ void loop() {
   Wire.requestFrom(PCF_address,1);
   if(Wire.available())
   {
-    byte x = Wire.read(); 
+    byte x = Wire.read();
+    Serial.println("IO: "); 
     Serial.println((byte)~x);
   }
 
